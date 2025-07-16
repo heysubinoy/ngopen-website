@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/lib/prisma";
+import { db } from "@/lib/db";
+import { apiKeys } from "@/lib/schema";
+import { eq } from "drizzle-orm";
 
 // POST: { key: "..." }
 export async function POST(req: NextRequest) {
@@ -9,7 +11,11 @@ export async function POST(req: NextRequest) {
       { valid: false, error: "No key provided" },
       { status: 400 }
     );
-  const apiKey = await prisma.apiKey.findUnique({ where: { key } });
+  const apiKey = await db
+    .select()
+    .from(apiKeys)
+    .where(eq(apiKeys.key, key))
+    .then((rows) => rows[0]);
   if (!apiKey || !apiKey.isActive) {
     return NextResponse.json({ valid: false }, { status: 200 });
   }

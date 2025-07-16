@@ -8,7 +8,6 @@ import { Code, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { signup } from "@/lib/auth";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -26,7 +25,7 @@ export default function RegisterPage() {
     const password = formData.get("password") as string;
 
     try {
-      await signup(name, email, password);
+      // await signup(name, email, password);
       router.push("/dashboard");
     } catch (err) {
       setError("Failed to create account. Please try again.");

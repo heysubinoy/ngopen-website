@@ -150,29 +150,30 @@ export default function DashboardContent({ user }: DashboardContentProps) {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {apiKeys.map((key) => (
-                  <TableRow key={key.id}>
-                    <TableCell>{key.id}</TableCell>
-                    <TableCell className="font-mono text-xs max-w-xs truncate">
-                      {key.key}
-                    </TableCell>
-                    <TableCell>{key.description}</TableCell>
-                    <TableCell>
-                      {key.createdAt
-                        ? new Date(key.createdAt).toLocaleString()
-                        : "-"}
-                    </TableCell>
-                    <TableCell>
-                      <Button
-                        variant="destructive"
-                        size="sm"
-                        onClick={() => deleteKey(key.id)}
-                      >
-                        Delete
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {apiKeys.length > 0 &&
+                  apiKeys.map((key) => (
+                    <TableRow key={key.id}>
+                      <TableCell>{key.id}</TableCell>
+                      <TableCell className="font-mono text-xs max-w-xs truncate">
+                        {key.key}
+                      </TableCell>
+                      <TableCell>{key.description}</TableCell>
+                      <TableCell>
+                        {key.createdAt
+                          ? new Date(key.createdAt).toLocaleString()
+                          : "-"}
+                      </TableCell>
+                      <TableCell>
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          onClick={() => deleteKey(key.id)}
+                        >
+                          Delete
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
               </TableBody>
             </Table>
           )}
