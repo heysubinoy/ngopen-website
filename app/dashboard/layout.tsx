@@ -1,20 +1,17 @@
-import type React from "react"
-import { redirect } from "next/navigation"
-import { Code } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { getCurrentUser } from "@/lib/auth"
+import type React from "react";
+import { redirect } from "next/navigation";
+import { Code } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export default async function DashboardLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  const user = await getCurrentUser()
-
-  if (!user) {
-    redirect("/login")
-  }
-
+  const session = await getServerSession(authOptions);
+  const user = session?.user;
   return (
     <div className="flex flex-col min-h-screen">
       <header className="border-b">
@@ -24,9 +21,11 @@ export default async function DashboardLayout({
             <span>ngopen</span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-500 dark:text-gray-400">Welcome, {user.name}</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              Welcome, {user?.name || "User"}
+            </span>
             <Button variant="outline" size="sm" asChild>
-              <a href="/api/logout">Logout</a>
+              <a href="/api/auth/signout">Logout</a>
             </Button>
           </div>
         </div>
@@ -48,5 +47,5 @@ export default async function DashboardLayout({
         </div>
       </footer>
     </div>
-  )
+  );
 }
