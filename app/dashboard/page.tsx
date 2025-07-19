@@ -6,11 +6,10 @@ import { LoadingState } from "@/components/loading-state";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
-  const user = session?.user;
 
   return (
     <Suspense fallback={<LoadingState />}>
-      <DashboardContent user={user!} />
+      <DashboardContent />
     </Suspense>
   );
 }

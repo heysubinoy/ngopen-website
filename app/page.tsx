@@ -1,10 +1,19 @@
-import Link from "next/link"
-import { ArrowRight, Code, Github, Terminal, Lock, Globe, Zap, Server } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { CodeBlock } from "@/components/code-block"
-import { FeatureCard } from "@/components/feature-card"
-import { StepCard } from "@/components/step-card"
-import { Testimonial } from "@/components/testimonial"
+import Link from "next/link";
+import {
+  ArrowRight,
+  Code,
+  Github,
+  Terminal,
+  Lock,
+  Globe,
+  Zap,
+  Server,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { CodeBlock } from "@/components/code-block";
+import { FeatureCard } from "@/components/feature-card";
+import { StepCard } from "@/components/step-card";
+import { Testimonial } from "@/components/testimonial";
 
 export default function Home() {
   return (
@@ -14,19 +23,33 @@ export default function Home() {
         <div className="container flex h-16 items-center justify-between px-4 md:px-6">
           <div className="flex items-center gap-2 font-bold text-xl">
             <Code className="h-6 w-6 text-emerald-400" />
-            <span className="bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">ngopen</span>
+            <span className="bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">
+              ngopen
+            </span>
           </div>
           <nav className="hidden md:flex gap-6">
-            <Link href="#features" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
+            <Link
+              href="#features"
+              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
+            >
               Features
             </Link>
-            <Link href="#how-it-works" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
+            <Link
+              href="#how-it-works"
+              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
+            >
               How It Works
             </Link>
-            <Link href="#testimonials" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
+            <Link
+              href="#testimonials"
+              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
+            >
               Testimonials
             </Link>
-            <Link href="/docs" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
+            <Link
+              href="/docs"
+              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
+            >
               Docs
             </Link>
           </nav>
@@ -45,7 +68,7 @@ export default function Home() {
               className="bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white border-0"
               asChild
             >
-              <Link href="/get-started">Get Started</Link>
+              <Link href="/login">Login</Link>
             </Button>
           </div>
         </div>
@@ -66,8 +89,8 @@ export default function Home() {
                     Self-hosted freedom.
                   </h1>
                   <p className="max-w-[600px] text-zinc-400 md:text-xl">
-                    ngopen lets you create secure tunnels from your localhost to the internet — no third-party servers,
-                    no limits.
+                    ngopen lets you create secure tunnels from your localhost to
+                    the internet — no third-party servers, no limits.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -101,7 +124,7 @@ export default function Home() {
                   </div>
                   <CodeBlock
                     code={`$ go install github.com/heysubinoy/ngopen@latest
-$ ngopen -local localhost:3000 -auth XXX
+$ ngopen --local localhost:3000 --auth XXX
 ✓ Tunnel established
 ✓ Forwarding https://demo.n.sbn.lol -> localhost:3000
 ✓ Ready for connections`}
@@ -113,14 +136,22 @@ $ ngopen -local localhost:3000 -auth XXX
         </section>
 
         {/* Features Section */}
-        <section id="features" className="w-full py-12 md:py-24 lg:py-32 border-b border-zinc-800 bg-zinc-900">
+        <section
+          id="features"
+          className="w-full py-12 md:py-24 lg:py-32 border-b border-zinc-800 bg-zinc-900"
+        >
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm">Features</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Everything you need</h2>
+                <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm">
+                  Features
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Everything you need
+                </h2>
                 <p className="max-w-[900px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  ngopen provides all the tools you need to expose your local services securely, with complete control.
+                  ngopen provides all the tools you need to expose your local
+                  services securely, with complete control.
                 </p>
               </div>
             </div>
@@ -161,29 +192,37 @@ $ ngopen -local localhost:3000 -auth XXX
         </section>
 
         {/* How It Works Section */}
-        <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32 border-b border-zinc-800 bg-black">
+        <section
+          id="how-it-works"
+          className="w-full py-12 md:py-24 lg:py-32 border-b border-zinc-800 bg-black"
+        >
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm">How It Works</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Simple by design</h2>
+                <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm">
+                  How It Works
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Simple by design
+                </h2>
                 <p className="max-w-[900px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Get up and running in minutes with our straightforward setup process.
+                  Get up and running in minutes with our straightforward setup
+                  process.
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 md:grid-cols-3">
+            <div className="mx-auto grid max-w-6xl items-center gap-6 py-12 md:grid-cols-3">
               <StepCard
                 number="01"
                 title="Install CLI"
                 description="Download and install the ngopen CLI with a single command."
-                code="go install github.com/heysubinoy/ngopen@latest"
+                code={" go install github.com/heysubinoy/ngopen@latest"}
               />
               <StepCard
                 number="02"
                 title="Start tunnel"
                 description="Expose your local server with a simple command."
-                code="ngopen local localhost:3000 -auth XXX"
+                code="ngopen --local localhost:3000 --auth XXX"
               />
               <StepCard
                 number="03"
@@ -196,12 +235,19 @@ $ ngopen -local localhost:3000 -auth XXX
         </section>
 
         {/* Testimonial Section */}
-        <section id="testimonials" className="w-full py-12 md:py-24 lg:py-32 border-b border-zinc-800 bg-zinc-900">
+        <section
+          id="testimonials"
+          className="w-full py-12 md:py-24 lg:py-32 border-b border-zinc-800 bg-zinc-900"
+        >
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm">Testimonials</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Loved by developers</h2>
+                <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm">
+                  Testimonials
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Loved by developers
+                </h2>
                 <p className="max-w-[900px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   See what developers are saying about ngopen.
                 </p>
@@ -209,9 +255,10 @@ $ ngopen -local localhost:3000 -auth XXX
             </div>
             <div className="mx-auto max-w-3xl py-12">
               <Testimonial
+                image="/testimonial/subhadip.webp"
                 quote="Finally, a tunnel tool I control. ngopen fits right into my self-hosted stack."
-                author="Sarah Chen"
-                role="Senior Backend Developer"
+                author="Subhadip Saha"
+                role="Full Stack Developer"
               />
             </div>
           </div>
@@ -222,7 +269,9 @@ $ ngopen -local localhost:3000 -auth XXX
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Ready to take control?</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                  Ready to take control?
+                </h2>
                 <p className="max-w-[600px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Start exposing your local services with ngopen today.
                 </p>
@@ -259,11 +308,16 @@ $ ngopen -local localhost:3000 -auth XXX
                 ngopen
               </span>
             </div>
-            <p className="text-sm text-zinc-400">Self-hosted reverse tunneling and HTTP exposure service.</p>
+            <p className="text-sm text-zinc-400">
+              Self-hosted reverse tunneling and HTTP exposure service.
+            </p>
           </div>
           <div className="flex flex-col gap-2 md:items-end">
             <div className="flex gap-4">
-              <Link href="https://github.com/heysubinoy/ngopen" className="text-zinc-400 hover:text-white">
+              <Link
+                href="https://github.com/heysubinoy/ngopen"
+                className="text-zinc-400 hover:text-white"
+              >
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
@@ -271,17 +325,15 @@ $ ngopen -local localhost:3000 -auth XXX
                 <FileText className="h-5 w-5" />
                 <span className="sr-only">Documentation</span>
               </Link>
-              <Link href="/discord" className="text-zinc-400 hover:text-white">
-                <MessageSquare className="h-5 w-5" />
-                <span className="sr-only">Discord</span>
-              </Link>
             </div>
-            <p className="text-sm text-zinc-400">© {new Date().getFullYear()} ngopen. All rights reserved.</p>
+            <p className="text-sm text-zinc-400">
+              © {new Date().getFullYear()} ngopen. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
-import { FileText, MessageSquare } from "lucide-react"
+import { FileText, MessageSquare } from "lucide-react";

@@ -28,13 +28,10 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
+import { Skeleton } from "@/components/ui/skeleton";
 
-interface DashboardContentProps {
-  user: User;
-}
-
-export default function DashboardContent({ user }: DashboardContentProps) {
-  const [copied, setCopied] = useState(false);
+export default function DashboardContent() {
+  const [copied, setCopied] = useState<number | false>(false);
   const [apiKeys, setApiKeys] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
@@ -113,14 +110,14 @@ export default function DashboardContent({ user }: DashboardContentProps) {
         <CardContent>
           <div className="space-y-4">
             <Button className="w-full" asChild>
-              <a href="/downloads/ngopen-latest.zip">
+              <a
+                href="https://github.com/heysubinoy/ngopen"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Download className="mr-2 h-4 w-4" /> Download Latest Version
               </a>
             </Button>
-
-            <div className="text-sm text-muted-foreground">
-              Version 1.2.0 | Released: April 10, 2025
-            </div>
           </div>
         </CardContent>
       </Card>
@@ -137,7 +134,34 @@ export default function DashboardContent({ user }: DashboardContentProps) {
             <Button onClick={() => setShowDialog(true)}>Create API Key</Button>
           </div>
           {loading ? (
-            <div>Loading...</div>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>ID</TableHead>
+                  <TableHead>Key</TableHead>
+                  <TableHead>Description</TableHead>
+                  <TableHead>Actions</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {[1, 2, 3].map((i) => (
+                  <TableRow key={i}>
+                    <TableCell>
+                      <Skeleton className="h-4 w-8" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-4 w-40" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-4 w-24" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-8 w-16" />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           ) : (
             <Table>
               <TableHeader>
@@ -145,7 +169,6 @@ export default function DashboardContent({ user }: DashboardContentProps) {
                   <TableHead>ID</TableHead>
                   <TableHead>Key</TableHead>
                   <TableHead>Description</TableHead>
-                  <TableHead>Created</TableHead>
                   <TableHead>Actions</TableHead>
                 </TableRow>
               </TableHeader>
@@ -154,15 +177,26 @@ export default function DashboardContent({ user }: DashboardContentProps) {
                   apiKeys.map((key) => (
                     <TableRow key={key.id}>
                       <TableCell>{key.id}</TableCell>
-                      <TableCell className="font-mono text-xs max-w-xs truncate">
-                        {key.key}
+                      <TableCell className="font-mono text-xs max-w-xs  flex items-center gap-2">
+                        <div className="break-all">{key.key}</div>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="ml-1"
+                          onClick={() => {
+                            navigator.clipboard.writeText(key.key);
+                            setCopied(key.id);
+                            setTimeout(() => setCopied(false), 2000);
+                          }}
+                        >
+                          {copied === key.id ? (
+                            <Check className="h-4 w-4 text-emerald-500" />
+                          ) : (
+                            <Copy className="h-4 w-4 text-zinc-400" />
+                          )}
+                        </Button>
                       </TableCell>
                       <TableCell>{key.description}</TableCell>
-                      <TableCell>
-                        {key.createdAt
-                          ? new Date(key.createdAt).toLocaleString()
-                          : "-"}
-                      </TableCell>
                       <TableCell>
                         <Button
                           variant="destructive"
@@ -196,8 +230,8 @@ export default function DashboardContent({ user }: DashboardContentProps) {
           </Dialog>
           <div className="mt-6">
             <h3 className="font-semibold mb-2">Setup Instructions</h3>
-            <div className="rounded-md bg-muted p-4 font-mono text-sm">
-              ngopen config set auth-key {"<your-api-key>"}
+            <div className="rounded-lg bg-zinc-900 px-6 py-4 font-mono text-sm text-white border-l-4 border-emerald-500 shadow">
+              ngopen config set auth {"<your-api-key>"}
             </div>
             <p className="text-sm text-muted-foreground mt-2">
               Use the API key above to authenticate your ngopen client. Keep

@@ -117,7 +117,7 @@ export default function DocsPage() {
               <div className="space-y-2">
                 <div className="rounded-md bg-zinc-900 p-3">
                   <div className="font-mono text-sm">
-                    <span className="text-emerald-400">ngopen -local localhost:3000 -auth XXX</span> - Initialize a new ngopen server
+                    <span className="text-emerald-400">ngopen --local localhost:3000 --auth XXX</span> - Initialize a new ngopen server
                   </div>
                 </div>
 
@@ -136,7 +136,7 @@ export default function DocsPage() {
 
                 <div className="rounded-md bg-zinc-900 p-3">
                   <div className="font-mono text-sm">
-                    <span className="text-emerald-400">ngopen help</span> - Display help information
+                    <span className="text-emerald-400">ngopen --help</span> - Display help information
                   </div>
                 </div>
               </div>

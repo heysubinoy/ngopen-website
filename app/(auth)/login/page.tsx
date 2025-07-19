@@ -1,112 +1,53 @@
 "use client";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Code, Loader2 } from "lucide-react";
+import { Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 export default function LoginPage() {
-  const router = useRouter();
-  const [error, setError] = useState("");
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setError("");
-    const formData = new FormData(e.currentTarget);
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
-    const res = await signIn("credentials", {
-      redirect: false,
-      email,
-      password,
-    });
-    if (res?.error) setError("Invalid credentials");
-  }
-
   return (
-    <div className="flex min-h-screen flex-col">
-      <div className="flex flex-1 flex-col justify-center px-6 py-12">
-        <div className="mx-auto w-full max-w-sm">
-          <div className="flex justify-center">
-            <Link
-              href="/"
-              className="flex items-center gap-2 font-bold text-xl"
-            >
-              <Code className="h-6 w-6" />
-              <span>ngopen</span>
-            </Link>
-          </div>
-          <h2 className="mt-6 text-center text-2xl font-bold text-gray-900 dark:text-gray-100">
+    <div className="flex flex-col min-h-screen bg-black text-white">
+      <header className="border-b border-zinc-800">
+        <div className="container flex h-16 items-center justify-between px-4 md:px-6">
+          <Link href="/" className="flex items-center gap-2 font-bold text-xl">
+            <Code className="h-6 w-6 text-emerald-400" />
+            <span className="bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">
+              ngopen
+            </span>
+          </Link>
+        </div>
+      </header>
+      <main className="flex-1 flex items-center justify-center">
+        <div className="mx-auto w-full max-w-sm rounded-xl border border-zinc-800 bg-zinc-950 p-8 md:p-10 shadow-lg">
+          <h2 className="text-center text-2xl font-bold mb-2">
             Sign in to your account
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
-            Or{" "}
-            <Link
-              href="/signup"
-              className="font-medium text-primary hover:underline"
-            >
-              create a new account
-            </Link>
-          </p>
+
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full bg-zinc-900 border-zinc-700 text-white hover:bg-zinc-800 hover:text-white mt-6"
+            onClick={() => signIn("google")}
+          >
+            Sign in with Google
+          </Button>
         </div>
-        <div className="mx-auto mt-8 w-full max-w-sm">
-          {error && (
-            <div className="mb-4 rounded-md bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/50 dark:text-red-200">
-              {error}
+      </main>
+      <footer className="border-t border-zinc-800 bg-black mt-8">
+        <div className="container flex flex-col gap-2 py-6 px-4 md:px-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 font-semibold">
+              <Code className="h-5 w-5 text-emerald-400" />
+              <span className="bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">
+                ngopen
+              </span>
             </div>
-          )}
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            <div>
-              <Label htmlFor="email">Email address</Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="mt-1"
-              />
+            <div className="text-sm text-zinc-400">
+              © {new Date().getFullYear()} ngopen. All rights reserved.
             </div>
-            <div>
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="mt-1"
-              />
-            </div>
-            <div>
-              <Button type="submit" className="w-full">
-                Login
-              </Button>
-            </div>
-          </form>
-          <div className="mt-6 flex flex-col gap-2">
-            <Button
-              type="button"
-              variant="outline"
-              className="w-full"
-              onClick={() => signIn("google")}
-            >
-              Sign in with Google
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              className="w-full"
-              onClick={() => signIn("github")}
-            >
-              Sign in with GitHub
-            </Button>
           </div>
         </div>
-      </div>
+      </footer>
     </div>
   );
 }

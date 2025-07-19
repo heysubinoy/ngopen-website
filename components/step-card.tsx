@@ -16,7 +16,7 @@ export function StepCard({ number, title, description, code }: StepCardProps) {
       </div>
       <p className="text-zinc-400">{description}</p>
       <div className="p-3 rounded-md bg-black border border-zinc-800">
-        <code className="text-sm text-emerald-400">{code}</code>
+        <code className="text-sm text-emerald-400 break-all">{code}</code>
       </div>
     </div>
   )
