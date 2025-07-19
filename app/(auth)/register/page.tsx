@@ -42,8 +42,10 @@ export default function RegisterPage() {
               href="/"
               className="flex items-center gap-2 font-bold text-xl"
             >
-              <Code className="h-6 w-6" />
-              <span>ngopen</span>
+              <img src="/ngopen.png" alt="ngopen logo" className="h-6 w-6" />
+              <span className="bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">
+                ngopen
+              </span>
             </Link>
           </div>
           <h2 className="mt-6 text-center text-2xl font-bold text-gray-900 dark:text-gray-100">

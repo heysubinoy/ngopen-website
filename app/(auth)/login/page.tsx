@@ -10,7 +10,7 @@ export default function LoginPage() {
       <header className="border-b border-zinc-800">
         <div className="container flex h-16 items-center justify-between px-4 md:px-6">
           <Link href="/" className="flex items-center gap-2 font-bold text-xl">
-            <Code className="h-6 w-6 text-emerald-400" />
+            <img src="/ngopen.png" alt="ngopen logo" className="h-6 w-6" />
             <span className="bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">
               ngopen
             </span>
